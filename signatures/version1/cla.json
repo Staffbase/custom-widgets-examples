@@ -1,3 +1,12 @@
 {
-   "signedContributors": []
+  "signedContributors": [
+    {
+      "name": "axdotl",
+      "id": 9337156,
+      "comment_id": 885480532,
+      "created_at": "2021-07-23T08:21:42Z",
+      "repoId": 368509922,
+      "pullRequestNo": 15
+    }
+  ]
 }
