@@ -23,7 +23,7 @@ import {
 import { WeatherForecastProps, WeatherForecast } from "./weather-forecast";
 import { configurationSchema, uiSchema } from "./configuration-schema";
 import pkg from "../package.json";
-import icon from "../resources/weather-forecast.svg";
+import widgetIcon from "../weather-forecast.png";
 
 /**
  * This factory creates the class which is registered with the tagname in the `custom element registry`
@@ -80,7 +80,7 @@ const blockDefinition: BlockDefinition = {
   configurationSchema: configurationSchema,
   uiSchema: uiSchema,
   label: "Weather",
-  iconUrl: icon,
+  iconUrl: widgetIcon,
 };
 
 /**

@@ -30,6 +30,17 @@ const config: webpack.Configuration = {
         test: /\.svg$/i,
         use: ["@svgr/webpack"],
       },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
