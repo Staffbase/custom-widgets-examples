@@ -1,5 +1,5 @@
 /*!
- * Copyright 2021, Staffbase GmbH and contributors.
+ * Copyright 2024, Staffbase GmbH and contributors.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -44,6 +44,7 @@ class FakeBaseClass extends window.HTMLElement implements BaseBlock {
         const { name, value: attribute } = attr;
         if (attribute) {
           const key = name as keyof T;
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           acc[key] = fromDataUri<any>(attribute);
         }
 

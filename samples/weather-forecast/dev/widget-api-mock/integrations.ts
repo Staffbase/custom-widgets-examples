@@ -11,27 +11,30 @@
  * limitations under the License.
  */
 
-import ReactDOM from "react-dom";
-import { configurationSchema, uiSchema } from "../src/configuration-schema";
-import React from "react";
-import Form from "@rjsf/material-ui";
+import {
+  IntegrationInformation,
+  IntegrationStates,
+  IntegrationType,
+} from "@staffbase/widget-sdk";
 
-const updateWidget = (data: Record<string, string>) => {
-  const el = document.querySelector("#preview > :first-child");
+export default async (
+  _type: IntegrationType
+): Promise<IntegrationInformation> => {
+  const date = new Date();
+  const expireDate = new Date();
 
-  for (const key in data) {
-    el?.setAttribute(key, data[key]);
-  }
+  expireDate.setDate(date.getDate() + 1);
+
+  return {
+    status: IntegrationStates.AVAILABLE,
+    enabledFeatures: ["foo"],
+    supportedFeatures: ["foo"],
+    token: {
+      accessToken: "fooToken",
+      accessTokenExpiresAt: expireDate,
+    },
+    signIn: () => {
+      console.log("Sign in");
+    },
+  };
 };
-
-ReactDOM.render(
-  <Form
-    schema={configurationSchema}
-    uiSchema={uiSchema}
-    onSubmit={(e) => {
-      updateWidget(e.formData);
-    }}
-    autoComplete={"off"}
-  />,
-  document.getElementById("config")
-);
