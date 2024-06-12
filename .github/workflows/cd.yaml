@@ -7,7 +7,8 @@ on:
     types: [published]
 
 env:
-  NODE_VERSION: 18
+  NODE_VERSION: 20
+  NODE_OPTIONS: --openssl-legacy-provider
   DEPLOYMENT_KIND: widget
   DEPLOYMENT_TARGET: weather
   DEPLOYMENT_STATIC_FILES: staffbase.user-profile-client.min.js

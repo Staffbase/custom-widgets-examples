@@ -1,6 +1,6 @@
 name: CI Tests
 env:
-  NODE_VERSION: 14
+  NODE_VERSION: 20
 on:
   push:
     paths-ignore:
