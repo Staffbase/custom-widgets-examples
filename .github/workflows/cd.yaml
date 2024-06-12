@@ -7,23 +7,28 @@ on:
     types: [published]
 
 env:
-  NODE_VERSION: 16
+  NODE_VERSION: 18
   DEPLOYMENT_KIND: widget
   DEPLOYMENT_TARGET: weather
   DEPLOYMENT_STATIC_FILES: staffbase.user-profile-client.min.js
   DEPLOYMENT_SOURCE: samples/weather-forecast/dist
-  
+
 
 jobs:
-  build-and-deploy:
+  prepare-deployment:
+    name: Prepare Deployment
     runs-on: ubuntu-22.04
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          # persisting credentials breaks installing dependencies from private repos
+          persist-credentials: false
+          # fetch all history for all branches and tags
+          fetch-depth: 0
 
       - name: Use Node JS
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
@@ -44,49 +49,43 @@ jobs:
           mkdir samples/weather-forecast/icons
           cp samples/weather-forecast/resources/weather-forecast.svg samples/weather-forecast/dist/icons
 
-      - name: Publish to S3 DE Prod
-        if:  startsWith(github.ref, 'refs/tags/')
-        uses: Staffbase/deploy-web-assets@0.1.0
+  continuous-delivery-dev-de1:
+    name: Continuous Delivery (dev de1)
+    needs: prepare-deployment
+    runs-on: ubuntu-22.04
+    if: github.ref == 'refs/heads/dev'
+    steps:
+      - name: Deploy
+        uses: Staffbase/deploy-web-assets@0.2.0
         with:
           source: ${{ env.DEPLOYMENT_SOURCE }}
-          target: ${{ env.DEPLOYMENT_TARGET }}
           deployment_kind: ${{ env.DEPLOYMENT_KIND }}
+          target: ${{ env.DEPLOYMENT_TARGET }}
+
           # Varnish settings
           static_files: ${{ env.DEPLOYMENT_STATIC_FILES }}
-          frontend_cache_host: frontend-cache-main-de1.staffbase.com
-          frontend_cache_password: ${{ secrets.FRONTEND_CACHE_PROD_DE1_PASSWORD }}
+          frontend_cache_password: ${{ secrets.FRONTEND_CACHE_DEV_DE1_PASSWORD }}
+          frontend_cache_host: frontend-cache-de1.staffbase.dev
 
           # AWS specific settings
-          aws_bucket: staffbasestatic-prod-de1
           aws_region: eu-central-1
-          aws_access_key_id: ${{ secrets.PROD_DE1_aws_access_key_id_ID }}
-          aws_access_key_secret: ${{ secrets.PROD_DE1_aws_access_key_id_SECRET }}
+          aws_bucket: staffbasestatic-dev-de1
+          aws_access_key_id: ${{ secrets.DEV_DE1_AWS_ACCESS_KEY_ID }}
+          aws_access_key_secret: ${{ secrets.DEV_DE1_AWS_ACCESS_KEY_SECRET }}
 
-      - name: Deploy to S3 US Prod
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: Staffbase/deploy-web-assets@0.1.0
+  continuous-delivery-stage-de1:
+    name: Continuous Delivery (stage de1)
+    needs: prepare-deployment
+    runs-on: ubuntu-22.04
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy
+        uses: Staffbase/deploy-web-assets@0.2.0
         with:
           source: ${{ env.DEPLOYMENT_SOURCE }}
-          target: ${{ env.DEPLOYMENT_TARGET }}
           deployment_kind: ${{ env.DEPLOYMENT_KIND }}
-          # Varnish settings
-          static_files: ${{ env.DEPLOYMENT_STATIC_FILES }}
-          frontend_cache_host: frontend-cache-us1.staffbase.com
-          frontend_cache_password: ${{ secrets.FRONTEND_CACHE_PROD_US1_PASSWORD }}
-
-          # AWS specific settings
-          aws_bucket: staffbasestatic-prod-us1
-          aws_region: us-east-1
-          aws_access_key_id: ${{ secrets.PROD_US1_aws_access_key_id_ID }}
-          aws_access_key_secret: ${{ secrets.PROD_US1_aws_access_key_id_SECRET }}
-
-      - name: Publish to S3 DE stage
-        if: github.ref == 'refs/heads/main'
-        uses: Staffbase/deploy-web-assets@0.1.0
-        with:
-          source: ${{ env.DEPLOYMENT_SOURCE }}
           target: ${{ env.DEPLOYMENT_TARGET }}
-          deployment_kind: ${{ env.DEPLOYMENT_KIND }}
+
           # Varnish settings
           static_files: ${{ env.DEPLOYMENT_STATIC_FILES }}
           frontend_cache_host: frontend-cache-de1.staffbase.rocks
@@ -95,23 +94,77 @@ jobs:
           # AWS specific settings
           aws_bucket: staffbasestatic-stage-de1
           aws_region: eu-central-1
-          aws_access_key_id: ${{ secrets.STAGE_DE1_aws_access_key_id_ID }}
-          aws_access_key_secret: ${{ secrets.STAGE_DE1_aws_access_key_id_SECRET }}
+          aws_access_key_id: ${{ secrets.STAGE_DE1_AWS_ACCESS_KEY_ID }}
+          aws_access_key_secret: ${{ secrets.STAGE_DE1_AWS_ACCESS_KEY_SECRET }}
 
-      - name: Publish to S3 DE dev
-        if: github.ref == 'refs/heads/dev'
-        uses: Staffbase/deploy-web-assets@0.1.0
+  continuous-delivery-prod-de1:
+    name: Continuous Delivery (prod de1)
+    needs: prepare-deployment
+    runs-on: ubuntu-22.04
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Deploy
+        uses: Staffbase/deploy-web-assets@0.2.0
         with:
           source: ${{ env.DEPLOYMENT_SOURCE }}
-          target: ${{ env.DEPLOYMENT_TARGET }}
           deployment_kind: ${{ env.DEPLOYMENT_KIND }}
+          target: ${{ env.DEPLOYMENT_TARGET }}
+
           # Varnish settings
           static_files: ${{ env.DEPLOYMENT_STATIC_FILES }}
-          frontend_cache_host: frontend-cache-de1.staffbase.dev
-          frontend_cache_password: ${{ secrets.FRONTEND_CACHE_DEV_DE1_PASSWORD }}
+          frontend_cache_host: frontend-cache-de1.staffbase.com
+          frontend_cache_password: ${{ secrets.FRONTEND_CACHE_PROD_DE1_PASSWORD }}
 
           # AWS specific settings
-          aws_bucket: staffbasestatic-dev-de1
+          aws_bucket: staffbasestatic-prod-de1
           aws_region: eu-central-1
-          aws_access_key_id: ${{ secrets.DEV_DE1_aws_access_key_id_ID }}
-          aws_access_key_secret: ${{ secrets.DEV_DE1_aws_access_key_id_SECRET }}
+          aws_access_key_id: ${{ secrets.PROD_DE1_AWS_ACCESS_KEY_ID }}
+          aws_access_key_secret: ${{ secrets.PROD_DE1_AWS_ACCESS_KEY_SECRET }}
+
+  continuous-delivery-prod-us1:
+    name: Continuous Delivery (prod us1)
+    needs: prepare-deployment
+    runs-on: ubuntu-22.04
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Deploy
+        uses: Staffbase/deploy-web-assets@0.2.0
+        with:
+          source: ${{ env.DEPLOYMENT_SOURCE }}
+          deployment_kind: ${{ env.DEPLOYMENT_KIND }}
+          target: ${{ env.DEPLOYMENT_TARGET }}
+
+          # Varnish settings
+          static_files: ${{ env.DEPLOYMENT_STATIC_FILES }}
+          frontend_cache_host: frontend-cache-us1.staffbase.com
+          frontend_cache_password: ${{ secrets.FRONTEND_CACHE_PROD_US1_PASSWORD }}
+
+          # AWS specific settings
+          aws_bucket: staffbasestatic-prod-us1
+          aws_region: us-east-1
+          aws_access_key_id: ${{ secrets.PROD_US1_AWS_ACCESS_KEY_ID }}
+          aws_access_key_secret: ${{ secrets.PROD_US1_AWS_ACCESS_KEY_SECRET }}
+
+  continuous-delivery-prod-au1:
+    name: Continuous Delivery (prod au1)
+    needs: prepare-deployment
+    runs-on: ubuntu-22.04
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Deploy
+        uses: Staffbase/deploy-web-assets@0.2.0
+        with:
+          source: ${{ env.DEPLOYMENT_SOURCE }}
+          deployment_kind: ${{ env.DEPLOYMENT_KIND }}
+          target: ${{ env.DEPLOYMENT_TARGET }}
+
+          # Varnish settings
+          static_files: ${{ env.DEPLOYMENT_STATIC_FILES }}
+          frontend_cache_host: frontend-cache-au1.staffbase.com
+          frontend_cache_password: ${{ secrets.FRONTEND_CACHE_PROD_AU1_PASSWORD }}
+
+          # AWS specific settings
+          aws_bucket: staffbasestatic-prod-au1
+          aws_region: ap-southeast-2
+          aws_access_key_id: ${{ secrets.PROD_AU1_AWS_ACCESS_KEY_ID }}
+          aws_access_key_secret: ${{ secrets.PROD_AU1_AWS_ACCESS_KEY_SECRET }}
