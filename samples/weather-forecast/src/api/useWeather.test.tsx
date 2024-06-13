@@ -104,7 +104,7 @@ describe("useWeather", () => {
     });
 
     expect(result.current.error).toEqual(
-      new TypeError("Cannot read property 'map' of undefined")
+      new TypeError("Cannot read properties of undefined (reading 'map')")
     );
     expect(log).toHaveBeenCalledTimes(1);
   });
