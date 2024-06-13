@@ -43,7 +43,7 @@ jobs:
 
       - name: Build widget
         env:
-          NODE_OPTIONS=--openssl-legacy-provider
+          NODE_OPTIONS: --openssl-legacy-provider
         run: yarn --cwd samples/weather-forecast build
 
       - name: Prepare Deployment
