@@ -7,7 +7,7 @@ on:
     types: [published]
 
 env:
-  NODE_VERSION: 16
+  NODE_VERSION: 20
   DEPLOYMENT_KIND: widget
   DEPLOYMENT_TARGET: weather
   DEPLOYMENT_STATIC_FILES: staffbase.user-profile-client.min.js
@@ -42,6 +42,8 @@ jobs:
         run: yarn install --cwd samples/weather-forecast --frozen-lockfile
 
       - name: Build widget
+        env:
+          NODE_OPTIONS=--openssl-legacy-provider
         run: yarn --cwd samples/weather-forecast build
 
       - name: Prepare Deployment
