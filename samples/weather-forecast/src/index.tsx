@@ -23,7 +23,7 @@ import {
 import { WeatherForecastProps, WeatherForecast } from "./weather-forecast";
 import { configurationSchema, uiSchema } from "./configuration-schema";
 import pkg from "../package.json";
-import widgetIcon from "../weather-forecast.png";
+import widgetIcon from "../resources/weather-forecast.png";
 
 /**
  * This factory creates the class which is registered with the tagname in the `custom element registry`

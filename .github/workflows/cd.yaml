@@ -49,7 +49,7 @@ jobs:
       - name: Prepare Deployment
         run: |
           mkdir samples/weather-forecast/icons
-          cp samples/weather-forecast/resources/weather-forecast.svg samples/weather-forecast/dist/icons
+          cp samples/weather-forecast/resources/weather-forecast.png samples/weather-forecast/dist/icons
 
   continuous-delivery-dev-de1:
     name: Continuous Delivery (dev de1)
