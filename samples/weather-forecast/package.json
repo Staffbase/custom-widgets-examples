@@ -43,7 +43,7 @@
     "@rjsf/material-ui": "5.19.1",
     "@rjsf/utils": "5.19.1",
     "@rjsf/validator-ajv8": "^5.19.1",
-    "@svgr/webpack": "6.5.1",
+    "@svgr/webpack": "8.1.0",
     "@testing-library/dom": "8.11.1",
     "@testing-library/jest-dom": "5.15.0",
     "@testing-library/react": "12.1.5",
