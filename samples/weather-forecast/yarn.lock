@@ -1534,18 +1534,7 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
-"@rjsf/core@5.19.1":
-  version "5.19.1"
-  resolved "https://registry.yarnpkg.com/@rjsf/core/-/core-5.19.1.tgz#46c87e91fbbc6d061011d654d8a428655b89c111"
-  integrity sha512-kuaavQWB3+7nNCHE3XiHb6ulGyX2OE+6ZabnVn1Ek850E5A9ZSdzMe3JXfqsH91W1gQxl95PCUHHl0iG9hvvEw==
-  dependencies:
-    lodash "^4.17.21"
-    lodash-es "^4.17.21"
-    markdown-to-jsx "^7.4.1"
-    nanoid "^3.3.7"
-    prop-types "^15.8.1"
-
-"@rjsf/core@^5.13.6":
+"@rjsf/core@5.19.3", "@rjsf/core@^5.13.6":
   version "5.19.3"
   resolved "https://registry.yarnpkg.com/@rjsf/core/-/core-5.19.3.tgz#34d476f0ec9d25fd838e374c861acb9ee9860c25"
   integrity sha512-AAzolj+fcFlwk0/5THA7T2JkmYTIUa+fLPM5prFqPw55FwWOa0qC5zIOfkhPS95Z9bfwJv3BubOAiKZ7MOGe8Q==
@@ -1556,23 +1545,12 @@
     nanoid "^3.3.7"
     prop-types "^15.8.1"
 
-"@rjsf/material-ui@5.19.1":
-  version "5.19.1"
-  resolved "https://registry.yarnpkg.com/@rjsf/material-ui/-/material-ui-5.19.1.tgz#98fc5719199ee7c5d03af6bd68113d7686e5ea6f"
-  integrity sha512-XOWwrZobO3LED4Ok+ttpwKBurdaH4ldj7v2/M+JoN/s7Gq26pY6hAkCxdG12tOH2OP9DP8i7q1X/L45NODm8fw==
+"@rjsf/material-ui@5.19.3":
+  version "5.19.3"
+  resolved "https://registry.yarnpkg.com/@rjsf/material-ui/-/material-ui-5.19.3.tgz#b7e0cf017c967b203d9142a9e5e2fe9bd428f738"
+  integrity sha512-13TonkDEHsDDW3GNdpxU2hNmqbGhiB01PRwWSPUeSGe8329g7Z/O63JPBj8IZA8Ls9esc687TyWxmHJplYK9Rg==
 
-"@rjsf/utils@5.19.1":
-  version "5.19.1"
-  resolved "https://registry.yarnpkg.com/@rjsf/utils/-/utils-5.19.1.tgz#c50f053d6b4a5c75334033d8fb36621446d3e601"
-  integrity sha512-vA4Rq6kiLbohxyB7AC6rcfnb1y/BvGGRNVFDA8S/E7a+OT52gEY+EA6iiYUHXPVMnFOdQtuN4QBilF575cc8vQ==
-  dependencies:
-    json-schema-merge-allof "^0.8.1"
-    jsonpointer "^5.0.1"
-    lodash "^4.17.21"
-    lodash-es "^4.17.21"
-    react-is "^18.2.0"
-
-"@rjsf/utils@^5.13.6":
+"@rjsf/utils@5.19.3", "@rjsf/utils@^5.13.6":
   version "5.19.3"
   resolved "https://registry.yarnpkg.com/@rjsf/utils/-/utils-5.19.3.tgz#776ae78610af61a7e1de1149e158e0bc4a1e45bd"
   integrity sha512-1lG/uMMmnAJE48BHUl4laNY2W2j2gIR2LH4jsxeEMSuFloB06ZuUXLesD03Nz2zQjm66izNmnm5eAmAi3Pa1yQ==
@@ -3432,10 +3410,10 @@ date-fns@^2.23.0:
   dependencies:
     "@babel/runtime" "^7.21.0"
 
-dayjs@1.11.11:
-  version "1.11.11"
-  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.11.tgz#dfe0e9d54c5f8b68ccf8ca5f72ac603e7e5ed59e"
-  integrity sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg==
+dayjs@1.11.12:
+  version "1.11.12"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.12.tgz#5245226cc7f40a15bf52e0b99fd2a04669ccac1d"
+  integrity sha512-Rt2g+nTbLlDWZTwwrIXjy9MeiZmSDI375FvZs72ngxx8PDC6YXOeR3q5LAuPzjZQxhiWdRKac7RKV+YyQYfYIg==
 
 debug@2.6.9:
   version "2.6.9"
