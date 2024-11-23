@@ -18,6 +18,7 @@ import { baseAttributes } from "./constants";
 import Config from "./config";
 import ReactDOM from "react-dom";
 import React from "react";
+import { createRoot } from "react-dom/client";
 
 /**
  * Simulated hosting class to run the widget
@@ -72,11 +73,13 @@ window.defineBlock = function (externalBlockDefinition) {
     WidgetApiMock,
   );
 
-  ReactDOM.render(
+  const container = document.getElementById("config");
+  const root = createRoot(container!);
+  root.render(
     React.createElement(Config, {
       blockDefinition: externalBlockDefinition.blockDefinition,
-    }),
-    document.getElementById("config"),
+    })
   );
+  
   window.customElements.define(customElementName, CustomElementClass);
 };

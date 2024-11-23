@@ -12,7 +12,6 @@
  */
 
 import React from "react";
-import ReactDOM from "react-dom";
 
 import {
   BlockFactory,
@@ -24,6 +23,7 @@ import { WeatherForecastProps, WeatherForecast } from "./weather-forecast";
 import { configurationSchema, uiSchema } from "./configuration-schema";
 import pkg from "../package.json";
 import icon from "../resources/weather-forecast.svg";
+import { createRoot } from "react-dom/client";
 
 /**
  * Define wich attributes are handled by the widget. This should be also reflected in configuration schema
@@ -58,7 +58,9 @@ const factory: BlockFactory = (BaseBlockClass, _widgetApi) => {
     }
 
     public renderBlock(container: HTMLElement): void {
-      ReactDOM.render(<WeatherForecast {...this.props} />, container);
+      createRoot(container).render(
+        <WeatherForecast {...this.props} />
+      );
     }
 
     /**
