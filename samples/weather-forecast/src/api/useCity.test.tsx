@@ -15,7 +15,7 @@ import axios from "axios";
 
 import React, { FunctionComponent } from "react";
 import { QueryClient, QueryClientProvider, setLogger } from "react-query";
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook, waitFor } from "@testing-library/react";
 
 import useCity from "./useCity";
 import { city } from "./mockData";
@@ -46,7 +46,7 @@ describe("useCity", () => {
 
   it("should return the coordinatse", async () => {
     mockAxios.mockResolvedValueOnce({ data: city });
-    const { result, waitFor } = renderHook(
+    const { result } = renderHook(
       () => useCity({ key: "foo", location: "Berlin", lang: "de" }),
       { wrapper }
     );

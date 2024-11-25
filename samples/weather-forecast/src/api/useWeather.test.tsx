@@ -15,7 +15,7 @@ import axios from "axios";
 
 import React, { FunctionComponent } from "react";
 import { QueryClient, QueryClientProvider, setLogger } from "react-query";
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook, waitFor } from "@testing-library/react";
 
 import useWeather from "./useWeather";
 import { weather } from "./mockData";
@@ -45,7 +45,7 @@ describe("useWeather", () => {
 
   it("should return weather data", async () => {
     mockAxios.mockResolvedValueOnce({ data: weather });
-    const { result, waitFor } = renderHook(
+    const { result } = renderHook(
       () => useWeather({ key: "foo", lat: 44, lon: 42 }),
       { wrapper }
     );
@@ -78,7 +78,7 @@ describe("useWeather", () => {
 
   it("should return an error, when the request fails", async () => {
     mockAxios.mockRejectedValue(new Error("XMLHTTPError"));
-    const { result, waitFor } = renderHook(
+    const { result } = renderHook(
       () => useWeather({ key: "foo", lat: 44, lon: 42 }),
       { wrapper }
     );
@@ -94,7 +94,7 @@ describe("useWeather", () => {
   it("should return an error, when the data processing goes wrong", async () => {
     const { daily, ...rest } = weather; // eslint-disable-line  @typescript-eslint/no-unused-vars
     mockAxios.mockResolvedValueOnce({ data: rest });
-    const { result, waitFor } = renderHook(
+    const { result } = renderHook(
       () => useWeather({ key: "foo", lat: 44, lon: 42 }),
       { wrapper }
     );
