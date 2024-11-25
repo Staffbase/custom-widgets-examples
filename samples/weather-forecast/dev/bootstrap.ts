@@ -16,7 +16,6 @@ import WidgetApiMock from "./widget-api-mock";
 import { fromDataUri, prepareAttributes } from "./utils/DataUtil";
 import { baseAttributes } from "./constants";
 import Config from "./config";
-import ReactDOM from "react-dom";
 import React from "react";
 import { createRoot } from "react-dom/client";
 
