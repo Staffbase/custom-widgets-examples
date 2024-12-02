@@ -70,7 +70,7 @@
     "eslint-config-prettier": "8.3.0",
     "file-loader": "^6.2.0",
     "jest": "27.1.0",
-    "jest-json-schema": "^5.0.0",
+    "jest-json-schema": "^6.1.0",
     "js-base64": "3.7.7",
     "minimal-polyfills": "2.2.3",
     "prettier": "3.3.3",
