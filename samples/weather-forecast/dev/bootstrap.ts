@@ -47,7 +47,7 @@ class FakeBaseClass extends window.HTMLElement implements BaseBlock {
         const { name, value: attribute } = attr;
         if (attribute) {
           const key = name as keyof T;
-          acc[key] = fromDataUri<T[keyof T]>(attribute);
+          acc[key] = fromDataUri<any>(attribute) as T[keyof T];
         }
 
         return acc;

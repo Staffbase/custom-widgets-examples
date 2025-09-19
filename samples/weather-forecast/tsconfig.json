@@ -19,6 +19,6 @@
     },
     "typeRoots": ["./typings", "node_modules/@types"]
   },
-  "include": ["src/*"],
+  "include": ["src/**/*", "dev/**/*"],
   "exclude": ["node_modules", "dist"]
 }
