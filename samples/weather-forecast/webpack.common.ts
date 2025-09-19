@@ -32,11 +32,7 @@ const config: webpack.Configuration = {
       },
       {
         test: /weather-forecast\.svg$/,
-        use: [
-          {
-            loader: "url-loader",
-          },
-        ],
+        type: "asset/inline",
       },
     ],
   },
