@@ -14,6 +14,7 @@
 import React from "react";
 import axios, { AxiosRequestConfig } from "axios";
 import { screen, render } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 import { WeatherForecast } from "./weather-forecast";
 

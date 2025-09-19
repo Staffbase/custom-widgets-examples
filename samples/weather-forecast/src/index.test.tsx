@@ -13,6 +13,7 @@
 
 import { screen } from "@testing-library/dom";
 import axios, { AxiosRequestConfig } from "axios";
+import "@testing-library/jest-dom";
 
 import "../dev/bootstrap";
 

@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-import { WidgetApi } from "@staffbase/widget-sdk";
+import { WidgetApi, BranchInformation } from "@staffbase/widget-sdk";
 import getLegacyAppTheme from "./legacyTheme";
 import {
   getUserInformation,
@@ -26,7 +26,14 @@ const apiMock: WidgetApi = {
   getUserInformation,
   getUserList,
   getUserInformationByExternalId,
-  getIntegration
+  getIntegration,
+  getBranchInformation(): BranchInformation {
+    return {
+      slug: "test-branch",
+      branchId: "test-branch-id",
+      webUrl: "https://test.staffbase.com"
+    };
+  }
 };
 
 export default apiMock;
