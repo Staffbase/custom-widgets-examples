@@ -17,7 +17,7 @@ import CSS from "csstype";
 export interface CardProperties {
   color: string;
   smallWidth: boolean;
-  children: any;
+  children: React.ReactNode;
 }
 
 export const Card: FunctionComponent<CardProperties> = (props) => {

@@ -99,7 +99,7 @@ const getWeather = async ({
   } = options;
   const params = { appid, lang, units, lat, lon };
 
-  if (typeof lat === undefined || typeof lon === undefined) {
+  if (lat === undefined || lon === undefined) {
     return Promise.reject(new Error("Missing coordinates."));
   }
 
