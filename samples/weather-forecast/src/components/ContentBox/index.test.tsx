@@ -32,7 +32,7 @@ describe("ContentBox", () => {
     const closeBtn = screen.getByRole("button");
     fireEvent.click(closeBtn);
 
-    expect(infoEvent).toBeCalled();
+    expect(infoEvent).toHaveBeenCalled();
   });
 
   it("Should render given data", () => {

@@ -26,6 +26,6 @@ describe("InfoBox", () => {
     const closeBtn = screen.getByRole("button");
     fireEvent.click(closeBtn);
 
-    expect(closeEvent).toBeCalled();
+    expect(closeEvent).toHaveBeenCalled();
   });
 });
