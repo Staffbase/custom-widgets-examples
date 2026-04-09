@@ -24,4 +24,4 @@ jobs:
           path-to-document: 'https://github.com/Staffbase/custom-widgets-examples/blob/main/CLA.md'
           # branch should not be protected
           branch: 'signatures'
-          allowlist: Ninerian,m-seidel,cornelius-behrend,boehmmic,FenziRocks,staffbot,dependabot
+          allowlist: Ninerian,m-seidel,cornelius-behrend,boehmmic,staffbot,dependabot,Copilot
