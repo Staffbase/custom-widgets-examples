@@ -19,7 +19,7 @@
   "dependencies": {
     "@staffbase/widget-sdk": "^3.15.5",
     "acorn": "^8.15.0",
-    "axios": "1.12.2",
+    "axios": "^1.13.5",
     "date-fns": "^2.30.0",
     "dayjs": "1.11.18",
     "react": "^18.3.1",
@@ -71,16 +71,29 @@
     "js-base64": "3.7.8",
     "minimal-polyfills": "2.2.3",
     "prettier": "3.6.2",
-    "react-svg-loader": "^3.0.3",
     "ts-loader": "^9.5.4",
     "ts-node": "10.9.2",
     "typescript": "5.9.2",
-    "webpack": "^5.101.3",
+    "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
     "webpack-merge": "^6.0.1"
   },
   "resolutions": {
-    "nth-check": ">=2.0.1"
+    "nth-check": ">=2.0.1",
+    "flatted": "3.4.2",
+    "minimatch": "3.1.4",
+    "@typescript-eslint/typescript-estree/minimatch": "9.0.7",
+    "serialize-javascript": "7.0.3",
+    "svgo": "3.3.3",
+    "node-forge": "1.4.0",
+    "picomatch": "2.3.2",
+    "jest-util/picomatch": "4.0.4",
+    "lodash": "4.17.23",
+    "lodash-es": "4.17.23",
+    "js-yaml": "4.1.1",
+    "@istanbuljs/load-nyc-config/js-yaml": "3.14.2",
+    "qs": "6.14.2",
+    "on-headers": "1.1.0"
   }
 }
