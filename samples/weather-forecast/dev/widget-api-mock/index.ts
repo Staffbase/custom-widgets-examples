@@ -31,7 +31,8 @@ const apiMock: WidgetApi = {
     return {
       slug: "test-branch",
       branchId: "test-branch-id",
-      webUrl: "https://test.staffbase.com"
+      webUrl: "https://test.staffbase.com",
+      flags: []
     };
   }
 };
