@@ -12,8 +12,7 @@
  */
 
 import * as webpack from "webpack";
-// eslint-disable-next-line
-const CopyPlugin = require("copy-webpack-plugin");
+import CopyPlugin from "copy-webpack-plugin";
 
 const config: webpack.Configuration = {
   entry: {
