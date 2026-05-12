@@ -25,13 +25,7 @@ jobs:
 
       - name: Install Yarn Dependencies
         working-directory:  samples/weather-forecast
-        # actions/setup-node writes `${NODE_AUTH_TOKEN}` as a literal string into
-        # the temp npmrc (NPM_CONFIG_USERCONFIG). npm expands env-var references;
-        # Yarn classic (v1) does NOT. Replace the placeholder in-place so Yarn
-        # receives the actual token when fetching from npm.pkg.github.com.
-        run: |
-          sed -i "s|\${NODE_AUTH_TOKEN}|${NODE_AUTH_TOKEN}|" "$NPM_CONFIG_USERCONFIG"
-          yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.STAFFBOT_NPM_READ }}
 
