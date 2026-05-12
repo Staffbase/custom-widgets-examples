@@ -27,6 +27,11 @@ jobs:
           registry-url: 'https://npm.pkg.github.com/'
           scope: '@staffbase'
 
+      - name: Configure GitHub Packages auth for yarn
+        run: echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.STAFFBOT_NPM_READ || secrets.GITHUB_TOKEN }}
+
       - name: Install Yarn Dependencies
         working-directory:  samples/weather-forecast
         run: yarn install --frozen-lockfile
