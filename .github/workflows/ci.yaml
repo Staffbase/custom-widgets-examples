@@ -10,6 +10,10 @@ jobs:
   executing-tests:
     runs-on: ubuntu-22.04
 
+    permissions:
+      contents: read
+      packages: read
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -27,7 +31,7 @@ jobs:
         working-directory:  samples/weather-forecast
         run: yarn install --frozen-lockfile
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.STAFFBOT_NPM_READ }}
+          NODE_AUTH_TOKEN: ${{ secrets.STAFFBOT_NPM_READ || secrets.GITHUB_TOKEN }}
 
       - name: Run Build
         working-directory: samples/weather-forecast
