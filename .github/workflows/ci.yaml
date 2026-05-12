@@ -23,18 +23,11 @@ jobs:
           registry-url: 'https://npm.pkg.github.com/'
           scope: '@staffbase'
 
-      - name: Configure GitHub Packages auth for Yarn
-        # actions/setup-node writes `${NODE_AUTH_TOKEN}` literally into the temp npmrc;
-        # Yarn classic does NOT expand env-var placeholders from npmrc files (unlike npm).
-        # Appending the already-expanded token to the same file that NPM_CONFIG_USERCONFIG
-        # points to is the reliable fix.
-        run: echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> "$NPM_CONFIG_USERCONFIG"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.STAFFBOT_NPM_READ }}
-
       - name: Install Yarn Dependencies
         working-directory:  samples/weather-forecast
         run: yarn install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.STAFFBOT_NPM_READ }}
 
       - name: Run Build
         working-directory: samples/weather-forecast
