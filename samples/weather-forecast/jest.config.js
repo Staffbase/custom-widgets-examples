@@ -6,5 +6,9 @@ module.exports = {
     '\\.svg$': '<rootDir>/__mocks__/fileMock.js',
     '^axios$': 'axios/dist/node/axios.cjs'
   },
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jsdom',  testEnvironmentOptions: {
+    customExportConditions: ['require', 'default'],
+  },  transformIgnorePatterns: [
+    '/node_modules/(?!(@x0k/json-schema-merge|@rjsf)/)',
+  ],
 };
