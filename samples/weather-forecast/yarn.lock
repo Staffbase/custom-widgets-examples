@@ -2534,7 +2534,7 @@
 
 "@staffbase/widget-sdk@^3.18.0":
   version "3.18.0"
-  resolved "https://npm.pkg.github.com/download/@Staffbase/widget-sdk/3.18.0/a2cc04cdce8c21b98f007587ee40fcd18d652c54#a2cc04cdce8c21b98f007587ee40fcd18d652c54"
+  resolved "https://registry.yarnpkg.com/@staffbase/widget-sdk/-/widget-sdk-3.18.0.tgz#a2cc04cdce8c21b98f007587ee40fcd18d652c54"
   integrity sha512-NPRtqe63UhEpCDVaAqOP3xJp+MWHkXw0IHGuiC5JLhd7S5Wiuv/c1Ad+miiKUrx3piJoSBr9elOH5QSy8TU9xg==
   dependencies:
     "@rjsf/core" "^6.3.1"
