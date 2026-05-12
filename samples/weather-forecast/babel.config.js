@@ -1,0 +1,40 @@
+// babel.config.js (project-wide) instead of .babelrc (package-local).
+// The key difference: babel.config.js applies to ALL files including node_modules
+// that Jest is instructed to transform via transformIgnorePatterns.
+// .babelrc is scoped to the package it lives in and does NOT apply to
+// node_modules, so pure-ESM deps like @x0k/json-schema-merge (introduced by
+// @rjsf/utils v6) would not have their `export` syntax compiled to CJS.
+module.exports = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        useBuiltIns: 'usage',
+        corejs: 3,
+        targets: '> 0.25%, not dead, not ie < 11',
+      },
+    ],
+    '@babel/preset-react',
+    '@babel/preset-typescript',
+  ],
+  plugins: [
+    '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-proposal-class-properties',
+    '@babel/plugin-proposal-object-rest-spread',
+  ],
+  env: {
+    test: {
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            targets: { node: 'current' },
+            modules: 'commonjs',
+          },
+        ],
+        '@babel/preset-react',
+        '@babel/preset-typescript',
+      ],
+    },
+  },
+};
