@@ -25,3 +25,4 @@ jobs:
           # branch should not be protected
           branch: "signatures"
           allowlist: staffbot,dependabot,Copilot,noreply@anthropic.com,noreply@opencode.ai,copilot@noreply.github.com,*[bot]
+#test
