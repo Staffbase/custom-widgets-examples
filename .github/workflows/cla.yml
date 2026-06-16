@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: "CLA Assistant"
         if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA') || github.event_name == 'pull_request'
-        uses: iainmcgin/cla-github-action@3e58ace6af840f66fcd80f68c08d76559140df5e # v3.0.0
+        uses: iainmcgin/cla-github-action@b2654283c3d541393bf2c6efa1e0097537186313 # v3.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PERSONAL_ACCESS_TOKEN: ${{ secrets.OSS_CONTRIBUTOR_LICENSE_AGREEMENT }}
