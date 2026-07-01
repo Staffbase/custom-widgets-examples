@@ -9,5 +9,6 @@ metadata:
     - widgets
     - typescript
 spec:
+  owner: group:default/product-actions
   type: library
   lifecycle: production
