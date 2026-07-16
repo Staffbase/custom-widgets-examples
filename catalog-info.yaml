@@ -4,7 +4,7 @@ metadata:
   name: custom-widget-examples
   description: Some examples how to use the third party widget framework
   annotations:
-    github.com/project-slug: Staffbase/custom-widget-examples
+    github.com/project-slug: Staffbase/custom-widgets-examples
   tags:
     - widgets
     - typescript
