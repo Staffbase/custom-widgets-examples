@@ -34,6 +34,9 @@ const apiMock: WidgetApi = {
       webUrl: "https://test.staffbase.com",
       flags: []
     };
+  },
+  getServiceToken(_installationId: string) {
+    return Promise.resolve({ jwt: "test-service-token" });
   }
 };
 
