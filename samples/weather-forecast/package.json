@@ -19,7 +19,7 @@
   "dependencies": {
     "@staffbase/widget-sdk": "^3.18.0",
     "acorn": "^8.16.0",
-    "axios": "^1.16.0",
+    "axios": "^1.18.0",
     "date-fns": "^2.30.0",
     "dayjs": "1.11.20",
     "react": "^18.3.1",
@@ -29,7 +29,7 @@
     "regenerator-runtime": "0.14.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.0",
+    "@babel/core": "^7.29.6",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
@@ -76,7 +76,7 @@
     "typescript": "6.0.3",
     "webpack": "^5.106.2",
     "webpack-cli": "^7.0.2",
-    "webpack-dev-server": "^5.2.4",
+    "webpack-dev-server": "^5.2.6",
     "webpack-merge": "^6.0.1"
   },
   "resolutions": {
@@ -94,7 +94,7 @@
     "jest-util/picomatch": "4.0.4",
     "lodash": "4.18.1",
     "lodash-es": "4.18.1",
-    "js-yaml": "4.2.0",
+    "js-yaml": "4.3.0",
     "qs": "6.15.2",
     "uuid": "11.1.1",
     "on-headers": "1.1.0"
