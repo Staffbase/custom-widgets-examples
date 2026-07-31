@@ -6,20 +6,21 @@ updates:
       interval: weekly
       time: "08:00"
       timezone: "Europe/Berlin"
+      day: monday
     cooldown:
       default-days: 7
     open-pull-requests-limit: 5
     ignore:
       - dependency-name: "*"
-        update-types: [ "version-update:semver-patch" ]
+        update-types: ["version-update:semver-patch"]
       - dependency-name: "Staffbase/deploy-web-assets"
-
   - package-ecosystem: npm
     directory: "/samples/weather-forecast"
     schedule:
       interval: weekly
       time: "08:00"
       timezone: "Europe/Berlin"
+      day: monday
     cooldown:
       default-days: 7
     open-pull-requests-limit: 5
