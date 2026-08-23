@@ -12,6 +12,7 @@
  */
 
 import { format, parse } from "date-fns";
+import type { Locale } from "date-fns";
 import { enUS, de } from "date-fns/locale";
 
 const supportedLocales = [enUS, de];
