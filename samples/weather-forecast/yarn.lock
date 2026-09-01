@@ -2715,7 +2715,7 @@
 
 "@staffbase/widget-sdk@^3.19.3":
   version "3.19.3"
-  resolved "https://npm.pkg.github.com/download/@Staffbase/widget-sdk/3.19.3/5a83d72a044d2889f4f406cd22f737b348b3a0fc#5a83d72a044d2889f4f406cd22f737b348b3a0fc"
+  resolved "https://registry.npmjs.org/@staffbase/widget-sdk/-/widget-sdk-3.19.3.tgz#5a83d72a044d2889f4f406cd22f737b348b3a0fc"
   integrity sha512-wFvsxDg3DSUCWngiYZfZiAY6XY3zzNZHTDB+Q42TX02BpmOUDkuLa5NrdyNROpB6uO/WJQOltsCEZad8j8fl4g==
   dependencies:
     "@rjsf/core" "^6.3.1"
