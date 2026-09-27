@@ -8,7 +8,10 @@ on:
 
 jobs:
   autodev:
-    uses: Staffbase/gha-workflows/.github/workflows/template_autodev.yml@v15.1.1
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: Staffbase/gha-workflows/.github/workflows/template_autodev.yml@v17.1.0
     with:
       comments: true
     secrets:
