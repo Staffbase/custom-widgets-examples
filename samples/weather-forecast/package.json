@@ -19,7 +19,7 @@
   "dependencies": {
     "@staffbase/widget-sdk": "^3.19.1",
     "acorn": "^8.17.0",
-    "axios": "^1.18.1",
+    "axios": "^1.20.0",
     "date-fns": "^2.30.0",
     "dayjs": "1.11.21",
     "react": "^18.3.1",
